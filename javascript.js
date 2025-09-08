@@ -1,3 +1,6 @@
+var humanScore = 0;
+var compScore = 0;
+
 //console.log("Hello World");
 
 //randomize computer choice between RPS
@@ -14,6 +17,13 @@ function getComputerChoice(){
     }
 }
 
-console.log(getComputerChoice());
+//console.log(getComputerChoice());
 
-//function get
+function getHumanChoice(){
+    var choice = prompt("Choose rock, paper, or scissors");
+    return choice;
+    
+}
+
+
+console.log(getHumanChoice());
