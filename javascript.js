@@ -1,5 +1,3 @@
-var humanScore = 0;
-var computerScore = 0;
 
 //console.log("Hello World");
 
@@ -39,17 +37,48 @@ function playRound(humanChoice, computerChoice){
         (human == "paper" && computer == "rock") ||
         (human == "scissors" && computer == "paper")
         ){
-            console.log("You win. " + human + " beats " + computer); 
-        ++humanScore;
+        console.log("You win. " + human + " beats " + computer); 
+        //++humanScore;
+        return "human";
     }
 
     else{
         console.log("You lose. " + computer + " beats " + human);
-        ++computerScore;
+        return "computer";
     }
     
 }
 
-var humanSelection = getHumanChoice();
-var computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+function playGame(){
+    var humanScore = 0;
+    var computerScore = 0;
+
+    for (let i = 0; i < 5; ++i){
+        var humanSelection = getHumanChoice();
+        var computerSelection = getComputerChoice();
+        var winner = playRound(humanSelection, computerSelection);
+        if (winner == "human"){
+            ++humanScore;
+        }
+        else{
+            ++computerScore;
+        }
+    }
+    if (humanScore > computerScore){
+        console.log("You win the entire game. Congrats!!");
+    }
+    else if (computerScore > humanScore){
+        console.log("Computer wins the game. Better luck next time");
+    }
+    else{
+        console.log("Total tie from both sides.");
+    }
+
+
+}
+
+playGame();
+
+// var humanSelection = getHumanChoice();
+// var computerSelection = getComputerChoice();
+// playRound(humanSelection, computerSelection);
