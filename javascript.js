@@ -45,7 +45,7 @@ function playRound(humanChoice, computerChoice){
         console.log("You win. " + human + " beats " + computer); 
         ++humanScore;
         displayPlayerScore.textContent = humanScore;
-        //return "human";
+        
     }
 
     else{
@@ -53,7 +53,7 @@ function playRound(humanChoice, computerChoice){
         console.log("You lose. " + computer + " beats " + human);
         ++computerScore;
         displayCompScore.textContent = computerScore;
-        //return "computer";
+        
     }
 
     if (humanScore == 5){
@@ -73,36 +73,6 @@ function playRound(humanChoice, computerChoice){
     
 }
 
-// // function playGame(){
-    
-
-//     while (humanScore < 5 && computerScore < 5){
-//         var humanSelection = getHumanChoice();
-//         var computerSelection = getComputerChoice();
-
-        
-
-//         //var winner = playRound(humanSelection, computerSelection);
-        
-//         if (winner == "human"){
-//             ++humanScore;
-//         }
-//         else{
-//             ++computerScore;
-//         }
-//     }
-//     if (humanScore > computerScore){
-//         console.log("You win the entire game. Congrats!!");
-//     }
-//     else if (computerScore > humanScore){
-//         console.log("Computer wins the game. Better luck next time");
-//     }
-//     else{
-//         console.log("Total tie from both sides.");
-//     }
-
-
-// //}
 const buttons = document.querySelectorAll("button");
 const div = document.querySelector("#result");
 const displayPlayerScore = document.querySelector("#player");
@@ -113,8 +83,3 @@ buttons.forEach((button) => {
         playRound(playerChoice, getComputerChoice());
     });
 });
-
-
-// var humanSelection = getHumanChoice();
-// var computerSelection = getComputerChoice();
-// playRound(humanSelection, computerSelection);
