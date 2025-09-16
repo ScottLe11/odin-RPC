@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 
 //console.log("Hello World");
 
@@ -30,6 +33,7 @@ function playRound(humanChoice, computerChoice){
     var computer = computerChoice.toLowerCase();
 
     if (human == computer){
+        div.textContent = "Tied";
         console.log("Tied!");
     }
 
@@ -37,47 +41,79 @@ function playRound(humanChoice, computerChoice){
         (human == "paper" && computer == "rock") ||
         (human == "scissors" && computer == "paper")
         ){
+        div.textContent = "You win. " + human + " beats " + computer;
         console.log("You win. " + human + " beats " + computer); 
-        //++humanScore;
-        return "human";
+        ++humanScore;
+        displayPlayerScore.textContent = humanScore;
+        //return "human";
     }
 
     else{
+        div.textContent = "You lose. " + computer + " beats " + human;
         console.log("You lose. " + computer + " beats " + human);
-        return "computer";
+        ++computerScore;
+        displayCompScore.textContent = computerScore;
+        //return "computer";
+    }
+
+    if (humanScore == 5){
+        div.textContent = "Player Wins RPS. Congrats";
+        humanScore = 0;
+        computerScore = 0;
+        displayPlayerScore.textContent = humanScore;
+        displayCompScore.textContent = computerScore;
+    }
+    else if (computerScore == 5){
+        div.textContent = "Computer Wins RPS. Better luck next time";
+        humanScore = 0;
+        computerScore = 0;
+        displayPlayerScore.textContent = humanScore;
+        displayCompScore.textContent = computerScore;
     }
     
 }
 
-function playGame(){
-    var humanScore = 0;
-    var computerScore = 0;
+// // function playGame(){
+    
 
-    for (let i = 0; i < 5; ++i){
-        var humanSelection = getHumanChoice();
-        var computerSelection = getComputerChoice();
-        var winner = playRound(humanSelection, computerSelection);
-        if (winner == "human"){
-            ++humanScore;
-        }
-        else{
-            ++computerScore;
-        }
-    }
-    if (humanScore > computerScore){
-        console.log("You win the entire game. Congrats!!");
-    }
-    else if (computerScore > humanScore){
-        console.log("Computer wins the game. Better luck next time");
-    }
-    else{
-        console.log("Total tie from both sides.");
-    }
+//     while (humanScore < 5 && computerScore < 5){
+//         var humanSelection = getHumanChoice();
+//         var computerSelection = getComputerChoice();
+
+        
+
+//         //var winner = playRound(humanSelection, computerSelection);
+        
+//         if (winner == "human"){
+//             ++humanScore;
+//         }
+//         else{
+//             ++computerScore;
+//         }
+//     }
+//     if (humanScore > computerScore){
+//         console.log("You win the entire game. Congrats!!");
+//     }
+//     else if (computerScore > humanScore){
+//         console.log("Computer wins the game. Better luck next time");
+//     }
+//     else{
+//         console.log("Total tie from both sides.");
+//     }
 
 
-}
+// //}
+const buttons = document.querySelectorAll("button");
+const div = document.querySelector("#result");
+const displayPlayerScore = document.querySelector("#player");
+const displayCompScore = document.querySelector("#comp");
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) =>{
+        const playerChoice = e.target.id;
+        playRound(playerChoice, getComputerChoice());
+    });
+});
 
-playGame();
 
 // var humanSelection = getHumanChoice();
 // var computerSelection = getComputerChoice();
